@@ -1,6 +1,6 @@
-const { model } = require("mongoose")
 
-let {Schema,mode} =required("mongoose")
+
+let {Schema,model} = require("mongoose")
 
 
 let userSchema = new Schema({
@@ -11,4 +11,4 @@ let userSchema = new Schema({
 
 
 
-module.exports= model(userSchema,"user")
+module.exports= model("user",userSchema)
