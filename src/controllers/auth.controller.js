@@ -9,19 +9,14 @@ let jwt = require("jsonwebtoken")
 
 router.post("/login",async(req,res)=>{
     try{
-       
-    var salt = bcrypt.genSaltSync(10);
-var hash = bcrypt.hashSync(req.body?.password, salt);
-
-
-    let user = await User.create({
-        username:req.body.username,
-        email:req.body.email,
-        password:hash
-    })
+       //check if user is using the right value
+        const regex = new RegExp("^[a-zA-Z0-9]+$");
 
    
-
+        if(req.body?.password?.length<8 && req.body?.password?.length>16 && !regex.test(req.body?.password) ){
+//if value entered are incorrect send error
+      return res.send(({error:true,message:"user authentication failed"}))
+        }
    
 
 //else generate a token and send to frontend along with user
