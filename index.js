@@ -16,19 +16,18 @@ app.use((req, res, next) => {
     next();
   });
 
+  let Port = process.env.PORT || 8080
+  
+  app.listen(Port,async()=>{
+      await connect("mongodb://127.0.0.1:27017/tvapp",{useNewUrlParser:true,
+      useUnifiedTopology:true
+     },(err) => {
+          if(err) {console.log(err) }
+          else {console.log("mongdb is connected")}})
+     
+  })
 app.use("/api",userController)
 
 app.use("/api",searchController)
 
 
-
-let Port = process.env.PORT || 8080
-
-app.listen(Port,async()=>{
-    await connect("mongodb://127.0.0.1:27017/tvapp",{useNewUrlParser:true,
-    useUnifiedTopology:true
-   },(err) => {
-        if(err) {console.log(err) }
-        else {console.log("mongdb is connected")}})
-   
-})
