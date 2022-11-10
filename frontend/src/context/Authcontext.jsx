@@ -13,7 +13,7 @@ let signin=(value)=>{
     setToken(value)
 }
 console.log("token",token)
-return( <AuthContext.Provider value={{signin}}>
+return( <AuthContext.Provider value={{token,signin}}>
     {children}
         </AuthContext.Provider>)
    
