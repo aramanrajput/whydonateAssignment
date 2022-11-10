@@ -14,11 +14,11 @@ router.post("/login",async(req,res)=>{
 var hash = bcrypt.hashSync(req.body?.password, salt);
 
 
-    // let user = await User.create({
-    //     username:req.body.username,
-    //     email:req.body.email,
-    //     password:hash
-    // })
+    let user = await User.create({
+        username:req.body.username,
+        email:req.body.email,
+        password:hash
+    })
 
    
 
