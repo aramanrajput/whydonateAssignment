@@ -1,5 +1,6 @@
 let express = require("express")
-let connect = require("./src/config/db")
+
+let {connect}=require("mongoose")
 let cors = require("cors")
 let userController=require("./src/controllers/auth.controller")
 let app = express()
@@ -24,6 +25,10 @@ app.use("/api",searchController)
 let Port = process.env.PORT || 8080
 
 app.listen(Port,async()=>{
-    await connect()
-    console.log("listening on port 8080")
+    await connect("mongodb://127.0.0.1:27017/tvapp",{useNewUrlParser:true,
+    useUnifiedTopology:true
+   },(err) => {
+        if(err) {console.log(err) }
+        else {console.log("mongdb is connected")}})
+   
 })
