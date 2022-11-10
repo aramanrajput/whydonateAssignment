@@ -9,17 +9,16 @@ let jwt = require("jsonwebtoken")
 
 router.post("/login",async(req,res)=>{
     try{
-        console.log(req.body)
-    //check if user with the provided credentials exists in db or not
+       
     var salt = bcrypt.genSaltSync(10);
 var hash = bcrypt.hashSync(req.body?.password, salt);
 
 
-    let user = await User.create({
-        username:req.body.username,
-        email:req.body.email,
-        password:hash
-    })
+    // let user = await User.create({
+    //     username:req.body.username,
+    //     email:req.body.email,
+    //     password:hash
+    // })
 
    
 
