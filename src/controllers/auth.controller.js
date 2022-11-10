@@ -17,7 +17,11 @@ router.post("/login",async(req,res)=>{
 //if value entered are incorrect send error
       return res.send(({error:true,message:"user authentication failed"}))
         }
-   
+   let user = {
+    username:req.body.username,
+    email:req.body.email,
+    password:req.body.password
+   }
 
 //else generate a token and send to frontend along with user
     var token = jwt.sign({user}, 'secret');
