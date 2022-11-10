@@ -2,10 +2,10 @@ let express = require("express")
 
 let {connect}=require("mongoose")
 let cors = require("cors")
-let userController=require("./src/controllers/auth.controller")
+
 let app = express()
 
-let searchController = require("./src/controllers/search.controller")
+
 app.use(express.json())
 
 app.use(cors())
@@ -26,6 +26,9 @@ app.use((req, res, next) => {
           else {console.log("mongdb is connected")}})
      
   })
+
+  let userController=require("./src/controllers/auth.controller")
+  let searchController = require("./src/controllers/search.controller")
 app.use("/api",userController)
 
 app.use("/api",searchController)
